@@ -1,33 +1,31 @@
-// pages/PostDetails.jsx
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const PostDetails = () => {
+const RecipeDetails = () => {
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchRecipe = async () => {
       try {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
-        setPost(response.data);
+        setRecipe(response.data);
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching recipe:', error);
       }
     };
 
-    fetchPost();
+    fetchRecipe();
   }, [id]);
 
   return (
     <div>
-      <h2>Post Details</h2>
-      {post ? (
+      <h2>Recipe Details</h2>
+      {recipe ? (
         <div>
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
+          <h3>{recipe.title}</h3>
+          <p>{recipe.body}</p>
         </div>
       ) : (
         <p>Loading...</p>
@@ -36,4 +34,4 @@ const PostDetails = () => {
   );
 };
 
-export default PostDetails;
+export default RecipeDetails;

@@ -1,5 +1,3 @@
-// components/Header.jsx
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -35,10 +33,10 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Nav>
-        <h1>Your Blog</h1>
+        <h1>Cookbook</h1>
         <NavList>
           <NavItem><NavLink to="/">Home</NavLink></NavItem>
-          <NavItem><NavLink to="/add">Add Post</NavLink></NavItem>
+          <NavItem><NavLink to="/add">Add Recipe</NavLink></NavItem>
         </NavList>
       </Nav>
     </HeaderWrapper>
