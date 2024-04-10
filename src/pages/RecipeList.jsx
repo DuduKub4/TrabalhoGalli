@@ -20,7 +20,7 @@ const RecipeList = () => {
 
   return (
     <div>
-      <h2>Recipes</h2>
+      <h2>Receitas</h2>
       <ul>
         {recipes.map(recipe => (
           <li key={recipe.id}>

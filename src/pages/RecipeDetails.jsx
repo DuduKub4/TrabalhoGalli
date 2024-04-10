@@ -21,14 +21,14 @@ const RecipeDetails = () => {
 
   return (
     <div>
-      <h2>Recipe Details</h2>
+      <h2>Detalhes da Receita</h2>
       {recipe ? (
         <div>
           <h3>{recipe.title}</h3>
           <p>{recipe.body}</p>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>Carregando...</p>
       )}
     </div>
   );

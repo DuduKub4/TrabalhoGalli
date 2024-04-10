@@ -21,7 +21,7 @@ const AddRecipe = () => {
 
   return (
     <div>
-      <h2>Add Recipe</h2>
+      <h2>Adicionar Receita</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Title:</label>
