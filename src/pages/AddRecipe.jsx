@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styles from './AddRecipe.module.css'; // Importa o arquivo CSS do módulo
 
 const AddRecipe = () => {
   const [title, setTitle] = useState('');
@@ -20,7 +21,7 @@ const AddRecipe = () => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Adicionar Receita</h2>
       <form onSubmit={handleSubmit}>
         <div>
