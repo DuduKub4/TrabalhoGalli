@@ -6,6 +6,7 @@ import RecipeList from './pages/RecipeList';
 import AddRecipe from './pages/AddRecipe';
 import HomePage from './pages/HomePage';
 import AddedRecipes from './pages/AddedRecipes';
+import GlobalStyles from './GlobalStyles';
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <Router>
+      <GlobalStyles />
       <Header />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
