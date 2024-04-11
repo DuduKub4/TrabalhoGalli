@@ -1,9 +1,14 @@
+// Header.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
-  background-color: #6200ea; /* Deep Purple 500 */
+  position: fixed; /* Posicionamento fixo */
+  top: 0; /* Fixa o cabeçalho no topo da página */
+  left: 0;
+  width: 100%;
+  background-color: #6200ea;
   color: #fff;
 `;
 
@@ -42,10 +47,9 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Nav>
-        <h1>Cookbook</h1>
+        <h1>CookBook</h1>
         <NavList>
           <NavItem><NavLink to="/">Home</NavLink></NavItem>
-          <NavItem><NavLink to="/add">Adicionar Receita</NavLink></NavItem>
         </NavList>
       </Nav>
     </HeaderWrapper>

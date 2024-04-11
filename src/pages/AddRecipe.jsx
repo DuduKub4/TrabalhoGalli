@@ -1,40 +1,33 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import styles from './AddRecipe.module.css'; // Importa o arquivo CSS do módulo
+import { FormContainer, FormGroup, Label, Input, TextArea, Button } from '../styled-components/AddRecipeStyles';
 
-const AddRecipe = () => {
+const AddRecipe = ({ onAddRecipe }) => {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [description, setDescription] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post('https://jsonplaceholder.typicode.com/posts', { title, body });
-      alert('Recipe added successfully');
-      // Reset form fields
-      setTitle('');
-      setBody('');
-    } catch (error) {
-      console.error('Error adding recipe:', error);
-      alert('Failed to add recipe');
-    }
+  const handleAddRecipe = () => {
+    const newRecipe = { id: Math.random().toString(), title, description };
+    onAddRecipe(newRecipe);
+    setMessage('Receita adicionada');
+    setTimeout(() => setMessage(''), 3000); // Limpa a mensagem após 3 segundos
+    setTitle('');
+    setDescription('');
   };
 
   return (
-    <div className={styles.container}>
-      <h2>Adicionar Receita</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title:</label>
-          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        </div>
-        <div>
-          <label htmlFor="body">Instructions:</label>
-          <textarea id="body" value={body} onChange={(e) => setBody(e.target.value)} required></textarea>
-        </div>
-        <button type="submit">Add Recipe</button>
-      </form>
-    </div>
+    <FormContainer>
+      <FormGroup>
+        <Label htmlFor="title">Título:</Label>
+        <Input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="description">Descrição:</Label>
+        <TextArea id="description" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+      </FormGroup>
+      <Button onClick={handleAddRecipe}>Adicionar Receita</Button>
+      {message && <p>{message}</p>} {/* Exibe a mensagem se existir */}
+    </FormContainer>
   );
 };
 

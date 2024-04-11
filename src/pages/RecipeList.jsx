@@ -1,6 +1,7 @@
+// src/pages/RecipeList.jsx
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { RecipeContainer, RecipeTitle, RecipeContent, RecipeListContainer, RecipeItem, RecipeLink } from '../styled-components/RecipeListStyles';
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
@@ -19,17 +20,21 @@ const RecipeList = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Receitas</h2>
-      <ul>
-        {recipes.map(recipe => (
-          <li key={recipe.id}>
-            <h3><Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link></h3>
-            <p>{recipe.body}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <RecipeContainer>
+      <h2>Recipes from API</h2>
+      <RecipeListContainer>
+        <ul>
+          {recipes.map(recipe => (
+            <RecipeItem key={recipe.id}>
+              <RecipeLink href={`/post/${recipe.id}`}>
+                <RecipeTitle>{recipe.title}</RecipeTitle>
+                <RecipeContent>{recipe.body}</RecipeContent>
+              </RecipeLink>
+            </RecipeItem>
+          ))}
+        </ul>
+      </RecipeListContainer>
+    </RecipeContainer>
   );
 };
 
